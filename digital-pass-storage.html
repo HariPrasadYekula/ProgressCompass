@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bus Pass Storage - Progress Compass</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .digital-pass-storage {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align items horizontally */
+            text-align: center;  /* Center align text */
+            padding: 60px 20px; /* Add padding for spacing */
+        }
+
+        .digital-pass-storage h2 {
+            margin-bottom: 20px; /* Space below the heading */
+            font-size: 1.8em; /* Larger font size for heading */
+        }
+
+        #pass-upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align form items */
+            width: 100%; /* Full width for the form */
+            max-width: 400px; /* Max width to control form size */
+            margin: 0 auto; /* Center form in the container */
+        }
+
+        #pass-upload-form label {
+            margin-bottom: 10px; /* Space below label */
+            font-size: 1.1em; /* Slightly larger font size for label */
+        }
+
+        .file-upload-container {
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+            width: 100%;
+        }
+
+        #pass-upload-form input[type="file"] {
+            margin-bottom: 15px; /* Space between input and button */
+            width: 100%; /* Full width for the file input */
+            padding: 10px; /* Add padding for better appearance */
+            box-sizing: border-box; /* Include padding in width calculation */
+            text-align: center; /* Center align text inside the input */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .cta-btn {
+            padding: 10px 20px; /* Padding for button */
+            font-size: 1em; /* Font size for button text */
+        }
+
+        .pass-preview {
+            margin-top: 20px; /* Space above the preview */
+            background-color: #004545; /* Background for preview section */
+            color: #f5f5f5; /* Text color for preview */
+            padding: 10px;
+            border-radius: 5px;
+            display: none; /* Hide initially */
+            width: 100%; /* Full width for preview */
+            max-width: 400px; /* Max width to control preview size */
+            text-align: center; /* Center align text in preview */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <img src="logo.png" alt="Progress Compass Logo" class="logo" width="100"> <!-- Logo Image -->
+            <h1 class="logo">Progress Compass</h1>
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>            
+        </div>
+    </header>
+
+    <!-- Digital Pass Storage Section -->
+    <section class="digital-pass-storage">
+        <div class="container">
+            <h2>Store Your Digital Bus Pass</h2>
+            <form id="pass-upload-form" enctype="multipart/form-data">
+                <label for="bus-pass-upload">Upload Bus Pass:</label>
+                <div class="file-upload-container">
+                    <input type="file" id="bus-pass-upload" name="bus-pass" accept="image/*, application/pdf" required>
+                </div>
+                <button type="submit" class="cta-btn">Upload Pass</button>
+            </form>
+
+            <div id="pass-preview" class="pass-preview">
+                <!-- Preview of uploaded bus pass will be displayed here -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Progress Compass. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for handling file uploads and previews
+        const form = document.getElementById('pass-upload-form');
+        const previewContainer = document.getElementById('pass-preview');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const fileInput = document.getElementById('bus-pass-upload');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    previewContainer.innerHTML = `<img src="${e.target.result}" alt="Bus Pass Preview" style="max-width: 100%; height: auto;">`;
+                    previewContainer.style.display = 'block'; // Show preview container
+                };
+
+                reader.readAsDataURL(file); // Read the file as a data URL
+            }
+        });
+    </script>
+</body>
+</html>

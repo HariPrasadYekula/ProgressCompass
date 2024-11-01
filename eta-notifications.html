@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETA Notifications - Progress Compass</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-and-cta">
+                <img src="logo.png" alt="Progress Compass Logo" class="logo" width="100">
+                <h1 class="logo">Progress Compass</h1>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>            
+        </div>
+    </header>
+
+    <!-- ETA Notifications Section -->
+    <section class="eta-notifications">
+        <div class="container">
+            <h2>Estimate Arrival Time</h2>
+            <form id="eta-form">
+                <!-- Current Location -->
+                <div class="form-group">
+                    <label for="user-location">Enter Your Location:</label>
+                    <select id="user-location" name="user-location" required>
+                        <option value="">Choose a location</option>
+                        <option value="Undavalli">Undavalli</option>
+                        <option value="Barrage">Barrage</option>
+                        <option value="NTR Circle">NTR Circle</option>
+                        <option value="Benz Circle">Benz Circle</option>
+                    </select>
+                </div>
+
+                <!-- Route Selection -->
+                <div class="form-group">
+                    <label for="route">Select Your Route:</label>
+                    <select id="route" name="route">
+                        <option value="">Choose a route</option>
+                        <option value="route1">Route 1 - VIT to Vijayawada</option>
+                        <option value="route1-reverse">Route 1 - Vijayawada to VIT</option>
+                        <option value="route2">Route 2 - VIT to Guntur</option>
+                        <option value="route2-reverse">Route 2 - Guntur to VIT</option>
+                    </select>
+                </div>
+
+                <!-- Bus Selection -->
+                <div class="form-group">
+                    <label for="bus-number">Select Your Bus:</label>
+                    <select id="bus-number" name="bus-number" required>
+                        <option value="">Choose a bus</option>
+                        <!-- Default buses for the selected routes -->
+                    </select>
+                </div>
+
+                <button type="submit" class="cta-btn">Get ETA</button>
+            </form>
+
+            <!-- ETA Display -->
+            <div id="eta-display" class="eta-display">
+                <!-- ETA details will be displayed here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="eta-footer">
+        <div class="container">
+            <p>&copy; 2024 Progress Compass. All rights reserved.</p>
+        </div>
+    </footer>    
+
+    <script>
+        const routeBusMapping = {
+            "route1": ["Bus 101", "Bus 102"],
+            "route1-reverse": ["Bus 103", "Bus 104"],
+            "route2": ["Bus 201", "Bus 202"],
+            "route2-reverse": ["Bus 203", "Bus 204"]
+        };
+
+        const etaEstimations = {
+            "Undavalli": "15 mins",
+            "Barrage": "10 mins",
+            "NTR Circle": "20 mins",
+            "Benz Circle": "25 mins"
+        };
+
+        document.getElementById("route").addEventListener("change", function() {
+            const route = this.value;
+            const busNumberSelect = document.getElementById("bus-number");
+
+            busNumberSelect.innerHTML = '<option value="">Choose a bus</option>';
+            if (routeBusMapping[route]) {
+                routeBusMapping[route].forEach(bus => {
+                    const option = document.createElement("option");
+                    option.value = bus;
+                    option.textContent = bus;
+                    busNumberSelect.appendChild(option);
+                });
+            }
+        });
+
+        document.getElementById("eta-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const location = document.getElementById("user-location").value;
+            const etaDisplay = document.getElementById("eta-display");
+
+            etaDisplay.textContent = location && etaEstimations[location] 
+                ? `ETA for ${location}: ${etaEstimations[location]}`
+                : "Please select a valid location for ETA.";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Reservation - Progress Compass</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="logo.png" alt="Progress Compass Logo" class="logo" width="100">
+            <h1 class="logo">Progress Compass</h1>
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seat Reservation Section -->
+    <section class="seat-reservation">
+        <div class="container">
+            <h2>Reserve Your Seat</h2>
+            <p>Select your route, bus number, and choose a seat on the layout below.</p>
+
+            <form id="reservation-form" class="reservation-form">
+                <div class="form-group">
+                    <label for="start-location">Start Location:</label>
+                    <select id="start-location" name="start-location" required>
+                        <option value="VIT-AP University">VIT-AP University</option>
+                        <option value="Guntur">Guntur</option>
+                        <option value="Vijayawada">Vijayawada</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <select id="destination" name="destination" required>
+                        <option value="">Choose a destination</option>
+                        <option value="Vijayawada">Vijayawada</option>
+                        <option value="Guntur">Guntur</option>
+                        <option value="VIT-AP University">VIT-AP University</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bus-number">Bus Number:</label>
+                    <input type="text" id="bus-number" name="bus-number" placeholder="Enter bus number" required>
+                </div>
+
+                <!-- Seat Layout -->
+                <div class="bus-layout">
+                    <h3>Select a Seat</h3>
+                    <img src="seatlayout.png" alt="Bus Seat Layout" class="seat-layout-image">
+                </div>
+
+                <button type="submit" class="cta-btn">Reserve Seat</button>
+            </form>
+
+            <div id="confirmation" class="confirmation-message" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Progress Compass. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="seat-reservation.js"></script>
+</body>
+</html>

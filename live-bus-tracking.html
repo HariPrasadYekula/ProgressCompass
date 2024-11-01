@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Bus Tracking - Progress Compass</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <img src="logo.png" alt="Progress Compass Logo" class="logo" width="100"> <!-- Logo Image -->
+            <h1 class="logo">Progress Compass</h1>
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>            
+        </div>
+    </header>
+
+    <!-- Live Bus Tracking Section -->
+    <section class="feature-detail">
+        <div class="container">
+            <h2><i class="fas fa-map-marker-alt"></i> Live Bus Tracking</h2> <!-- Added map icon -->
+            <div class="map-view" id="map"></div>
+
+            <!-- Route and Bus Selection -->
+            <div class="selection-bar">
+                <label for="route-select">Select Route:</label>
+                <select id="route-select">
+                    <option value="">Choose a route</option>
+                    <option value="vj-vit">Vijayawada to VIT-AP University</option>
+                    <option value="gt-vit">Guntur to VIT-AP University</option>
+                    <option value="vit-vj">VIT-AP University to Vijayawada</option>
+                    <option value="vit-gt">VIT-AP University to Guntur</option>
+                </select>
+
+                <label for="bus-select">Select Bus Number:</label>
+                <select id="bus-select">
+                    <option value="">Choose a bus number</option>
+                </select>
+                
+                <button type="button" class="cta-btn" id="select-btn">Select</button>
+            </div>
+            <div class="eta">
+                <h3>Estimated Arrival Times</h3>
+                <p id="eta-info">Select a route and bus number to view ETA.</p>
+            </div>
+
+            <div class="notification-settings">
+                <h3>Notification Settings</h3>
+                <form id="notification-form">
+                    <input type="checkbox" id="arrival-alerts" name="alerts" checked>
+                    <label for="arrival-alerts">Send alerts for bus arrivals</label><br>
+                    <input type="checkbox" id="delay-alerts" name="alerts">
+                    <label for="delay-alerts">Send alerts for bus delays</label><br>
+                    <button type="submit" class="cta-btn">Save Settings</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Progress Compass. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Bus options for each route
+        const busOptions = {
+            "vj-vit": ["Bus 101", "Bus 102", "Bus 103"],
+            "gt-vit": ["Bus 201", "Bus 202", "Bus 203"],
+            "vit-vj": ["Bus 301", "Bus 302", "Bus 303"],
+            "vit-gt": ["Bus 401", "Bus 402", "Bus 403"]
+        };
+
+        const defaultETAs = {
+            "Bus 101": "ETA: 10 mins",
+            "Bus 102": "ETA: 15 mins",
+            "Bus 103": "ETA: 20 mins",
+            "Bus 201": "ETA: 12 mins",
+            "Bus 202": "ETA: 18 mins",
+            "Bus 203": "ETA: 25 mins",
+            "Bus 301": "ETA: 11 mins",
+            "Bus 302": "ETA: 16 mins",
+            "Bus 303": "ETA: 22 mins",
+            "Bus 401": "ETA: 13 mins",
+            "Bus 402": "ETA: 19 mins",
+            "Bus 403": "ETA: 24 mins"
+        };
+
+        const routeSelect = document.getElementById("route-select");
+        const busSelect = document.getElementById("bus-select");
+        const etaInfo = document.getElementById("eta-info");
+        const selectButton = document.getElementById("select-btn");
+
+        // Populate bus numbers based on selected route
+        routeSelect.addEventListener("change", () => {
+            const selectedRoute = routeSelect.value;
+            busSelect.innerHTML = '<option value="">Choose a bus number</option>';
+            
+            if (busOptions[selectedRoute]) {
+                busOptions[selectedRoute].forEach(bus => {
+                    const option = document.createElement("option");
+                    option.value = bus;
+                    option.textContent = bus;
+                    busSelect.appendChild(option);
+                });
+            }
+        });
+
+        // Display default ETA when a bus number is selected and 'Select' is clicked
+        selectButton.addEventListener("click", () => {
+            const selectedBus = busSelect.value;
+            if (defaultETAs[selectedBus]) {
+                etaInfo.textContent = defaultETAs[selectedBus];
+            } else {
+                etaInfo.textContent = "Select a valid bus number to view ETA.";
+            }
+        });
+    </script>
+</body>
+</html>

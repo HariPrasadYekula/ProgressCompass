@@ -22,8 +22,8 @@
                 <a href="#about">About</a>
                 <a href="#faq">FAQ</a>
                 <a href="#download">Download</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+                <a href="feedback.html">Feedback</a> 
+            </nav>            
         </div>
     </header>
 
@@ -45,34 +45,43 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature">
+<!-- Features Section -->
+<section id="features" class="features">
+    <div class="container">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <a href="live-bus-tracking.html"> <!-- Link to the Live Bus Tracking page -->
                     <i class="icon">🚌</i>
                     <h3>Live Bus Tracking</h3>
-                    <p>Real-time locations and nearby stops.</p>
-                </div>
-                <div class="feature">
+                </a>
+                <p>Real-time locations and nearby stops.</p>
+            </div>
+            <div class="feature">
+                <a href="seat-reservation.html"> <!-- Link to the Seat Reservation page -->
                     <i class="icon">💺</i>
                     <h3>Seat Reservations</h3>
-                    <p>Book your seat 10 minutes in advance.</p>
-                </div>
-                <div class="feature">
+                </a>
+                <p>Book your seat 10 minutes in advance.</p>
+            </div>
+            <div class="feature">
+                <a href="digital-pass-storage.html"> <!-- Link to the Digital Pass Storage page -->
                     <i class="icon">🛂</i>
                     <h3>Digital Pass Storage</h3>
-                    <p>Store your bus passes in one place.</p>
-                </div>
-                <div class="feature">
+                </a>
+                <p>Store your bus passes in one place.</p>
+            </div>
+            <div class="feature">
+                <a href="eta-notifications.html"> <!-- Link to the ETA Notifications page -->
                     <i class="icon">🕒</i>
                     <h3>ETA Notifications</h3>
-                    <p>Get notified when your bus is nearby.</p>
-                </div>
+                </a>
+                <p>Get notified when your bus is nearby.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
@@ -95,24 +104,29 @@
         </div>
     </section>
     
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h4>Can I use Progress Compass without a university email?</h4>
-                <p>No, Progress Compass requires a university email to register for secure access and verification.</p>
-            </div>
-            <div class="faq-item">
-                <h4>How do I save my bus pass in the app?</h4>
-                <p>Once registered, you can upload your bus pass as a digital document directly in the app under the “Digital Pass Storage” feature.</p>
-            </div>
-            <div class="faq-item">
-                <h4>What should I do if I miss my bus?</h4>
-                <p>Our app shows nearby stops where you can catch the next bus along the same route. You'll always have options nearby.</p>
-            </div>
+<!-- FAQ Section -->
+<section id="faq" class="faq">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h4 class="faq-question" onclick="toggleFAQ(this)">Can I use Progress Compass without a university email?</h4>
+            <p class="faq-answer" style="display: none;">No, Progress Compass requires a university email to register for secure access and verification.</p>
         </div>
-    </section>
+
+        <div class="faq-item">
+            <h4 class="faq-question" onclick="toggleFAQ(this)">How do I save my bus pass in the app?</h4>
+            <p class="faq-answer" style="display: none;">Once registered, you can upload your bus pass as a digital document directly in the app under the “Digital Pass Storage” feature.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-question" onclick="toggleFAQ(this)">What should I do if I miss my bus?</h4>
+            <p class="faq-answer" style="display: none;">Our app shows nearby stops where you can catch the next bus along the same route. You'll always have options nearby.</p>
+        </div>
+        
+        <!-- Add more FAQ items as needed -->
+    </div>
+</section>
 
     <!-- Download Section -->
     <section id="download" class="download">
@@ -140,6 +154,16 @@
             </nav>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script >
+        function toggleFAQ(question) {
+    const answer = question.nextElementSibling; // Get the answer (next sibling)
+    if (answer.style.display === "none" || answer.style.display === "") {
+        answer.style.display = "block"; // Show the answer
+    } else {
+        answer.style.display = "none"; // Hide the answer
+    }
+}
+
+    </script>
 </body>
 </html>
