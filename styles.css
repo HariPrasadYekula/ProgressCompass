@@ -479,3 +479,16 @@ body {
     display: inline-block;
     vertical-align: middle;
 }
+/* Specific styles for the Key Features section on index.html */
+#features .feature-grid {
+    display: flex; /* Aligns children in a row */
+    justify-content: space-between; /* Distributes space evenly between features */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+#features .feature {
+    flex: 1; /* Makes each feature take up equal space */
+    margin: 10px; /* Space between features */
+    min-width: 180px; /* Minimum width to prevent too much shrinking */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
