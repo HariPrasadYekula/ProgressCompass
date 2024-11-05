@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Info - Progress Compass</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <img src="logo.png" alt="Progress Compass Logo" class="logo" width="100"> <!-- Logo Image -->
+            <h1 class="logo">Progress Compass</h1>
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>            
+        </div>
+    </header>
+
+    <!-- Driver Info Section -->
+    <section class="feature-detail driver-info">
+        <div class="container">
+            <h2><i class="fas fa-id-badge"></i> Driver Info</h2> <!-- Added driver icon -->
+
+            <!-- Route Selection -->
+            <div class="selection-bar">
+                <label for="route-select">Select Route:</label>
+                <select id="route-select">
+                    <option value="">Choose a route</option>
+                    <option value="vj-vit">Vijayawada to VIT-AP University</option>
+                    <option value="gt-vit">Guntur to VIT-AP University</option>
+                    <option value="vit-vj">VIT-AP University to Vijayawada</option>
+                    <option value="vit-gt">VIT-AP University to Guntur</option>
+                </select>
+
+                <label for="bus-select">Select Bus Number:</label>
+                <select id="bus-select">
+                    <option value="">Choose a bus number</option>
+                </select>
+                
+                <button type="button" class="cta-btn" id="view-driver-btn">View Driver Info</button>
+            </div>
+
+            <!-- Driver Info Display -->
+            <div class="driver-details" id="driver-info">
+                <h3><i class="fas fa-user"></i> Driver Details</h3> <!-- Added person icon -->
+                <p id="driver-details">Select a route and bus number to view driver details.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Progress Compass. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Additional CSS for Driver Information -->
+    <style>
+        .driver-info {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .driver-info h2 {
+            margin-bottom: 20px;
+            color: #FFD700; /* Gold text for heading */
+        }
+
+        .selection-bar {
+            margin: 20px 0;
+        }
+
+        .driver-details {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #004545;
+            color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            line-height: 1.8; /* Adjust spacing between lines */
+        }
+
+        .cta-btn {
+            background-color: #FFD700;
+            color: #004545;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .cta-btn:hover {
+            background-color: #FFC107;
+        }
+
+        /* Style for adding a small margin between elements */
+        .spaced {
+            margin-bottom: 8px;
+        }
+
+        .contact-line {
+            display: block;
+            margin-top: 6px; /* Small space above contact line */
+        }
+    </style>
+
+    <!-- JavaScript for Dynamic Driver Info -->
+    <script>
+        // Bus options for each route
+        const busOptions = {
+            "vj-vit": ["Bus 101", "Bus 102", "Bus 103"],
+            "gt-vit": ["Bus 201", "Bus 202", "Bus 203"],
+            "vit-vj": ["Bus 301", "Bus 302", "Bus 303"],
+            "vit-gt": ["Bus 401", "Bus 402", "Bus 403"]
+        };
+
+        // Driver details for each bus
+        const driverDetails = {
+            "Bus 101": "Rajesh Kumar | +91 98765 43210",
+            "Bus 102": "Manoj Singh | +91 98765 43211",
+            "Bus 103": "Sunil Verma | +91 98765 43212",
+            "Bus 201": "Arjun Rao | +91 98765 43213",
+            "Bus 202": "Ravi Teja | +91 98765 43214",
+            "Bus 203": "Suresh Patil | +91 98765 43215",
+            "Bus 301": "Kishore Das | +91 98765 43216",
+            "Bus 302": "Pradeep Naidu | +91 98765 43217",
+            "Bus 303": "Mahesh Reddy | +91 98765 43218",
+            "Bus 401": "Rajiv Menon | +91 98765 43219",
+            "Bus 402": "Gopal Bhatt | +91 98765 43220",
+            "Bus 403": "Vinay Gowda | +91 98765 43221"
+        };
+
+        const routeSelect = document.getElementById("route-select");
+        const busSelect = document.getElementById("bus-select");
+        const driverDetailsDisplay = document.getElementById("driver-details");
+        const viewDriverBtn = document.getElementById("view-driver-btn");
+
+        // Populate bus numbers based on selected route
+        routeSelect.addEventListener("change", () => {
+            const selectedRoute = routeSelect.value;
+            busSelect.innerHTML = '<option value="">Choose a bus number</option>';
+            
+            if (busOptions[selectedRoute]) {
+                busOptions[selectedRoute].forEach(bus => {
+                    const option = document.createElement("option");
+                    option.value = bus;
+                    option.textContent = bus;
+                    busSelect.appendChild(option);
+                });
+            }
+        });
+
+        // Display route, bus number, and driver details when 'View Driver Info' is clicked
+        viewDriverBtn.addEventListener("click", () => {
+            const selectedRoute = routeSelect.options[routeSelect.selectedIndex].text;
+            const selectedBus = busSelect.value;
+
+            if (driverDetails[selectedBus]) {
+                const [driverName, contact] = driverDetails[selectedBus].split(' | ');
+
+                driverDetailsDisplay.innerHTML = `
+                    <strong class="spaced"><i class="fas fa-user"></i> Driver Details</strong><br>
+                    <span class="spaced"><strong>Route:</strong> ${selectedRoute}</span><br>
+                    <span class="spaced"><strong>Bus Number:</strong> ${selectedBus}</span><br>
+                    <span class="spaced"><strong>Driver Info:</strong> <strong>${driverName}</strong></span><br>
+                    <span class="contact-line"><strong>Contact:</strong> <strong>${contact}</strong></span>
+                `;
+            } else {
+                driverDetailsDisplay.textContent = "Select a valid bus number to view driver details.";
+            }
+        });
+    </script>
+</body>
+</html>
