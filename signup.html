@@ -49,6 +49,21 @@
             </nav>
         </div>
     </footer>
+    <script>
+    // Handle Sign-Up form submission
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Capture form data
+        const name = document.getElementById('name').value;
+
+        // Display an alert message
+        alert(`Thank you for signing up, ${name}! You can now log in.`);
+
+        // Redirect to the login page
+        window.location.href = 'login.html';
+    });
+</script>
 
 </body>
 </html>
