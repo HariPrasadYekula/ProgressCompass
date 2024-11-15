@@ -9,6 +9,7 @@ body {
     color: #f5f5f5;
     background-color: #0B3D3D; /* Forest Green */
 }
+
 /* General Styles */
 .container {
     width: 90%;
@@ -492,4 +493,145 @@ body {
     min-width: 180px; /* Minimum width to prevent too much shrinking */
     box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
+/* Profile Page Specific Styles */
+.profile-details {
+    background-color: #004545; /* Slightly lighter forest green */
+    padding: 40px 0;
+    color: #FFD700; /* Gold text color */
+    text-align: center;
+}
 
+.profile-card {
+    background-color: #0B3D3D; /* Forest green */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px; /* Limit the width for a clean look */
+    color: #f5f5f5;
+    text-align: left; /* Align content to the left */
+}
+
+.profile-picture {
+    display: block;
+    margin: 0 auto 20px; /* Center the profile picture */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #FFD700; /* Gold border */
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: #FFD700; /* Gold button */
+    color: #0B3D3D; /* Forest green text */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #d4af37; /* Slightly darker gold */
+    transform: scale(1.05);
+}
+
+.recent-trips {
+    background-color: #0B3D3D; /* Forest green */
+    color: #f5f5f5;
+    padding: 40px 0;
+}
+
+.recent-trips h2 {
+    margin-bottom: 20px;
+}
+
+.recent-trips ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recent-trips li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #004545; /* Slightly lighter forest green */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.digital-pass {
+    background-color: #004545; /* Slightly lighter forest green */
+    padding: 40px 0;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.digital-pass-image {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 300px;
+    border: 2px solid #FFD700; /* Gold border */
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-info p {
+        font-size: 14px;
+    }
+
+    .recent-trips li {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .digital-pass-image {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 10px;
+    }
+
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+
+    .recent-trips li {
+        padding: 6px;
+        font-size: 12px;
+    }
+}
+.hero {
+    position: relative;
+    background-image: url('background.png'); /* Add your image path here */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #FFD700; /* Gold text */
+    text-align: center;
+    padding: 40px 0;
+    height: 70vh; /* Keeps the hero section height consistent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
