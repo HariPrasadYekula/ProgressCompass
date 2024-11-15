@@ -20,7 +20,7 @@
     <section class="login">
         <div class="container">
             <h2>Login to Your Account</h2>
-            <form action="dashboard.html" method="POST">
+            <form id="loginForm" action="dashboard.html" method="POST" onsubmit="return loginRedirect()">
                 <div class="form-group">
                     <label for="email">University Email:</label>
                     <input type="email" id="email" name="email" placeholder="example@university.ac.in" required aria-label="University Email">
@@ -45,6 +45,20 @@
             </nav>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function loginRedirect() {
+            // Display the login success alert
+            alert("Logged in successfully!");
+
+            // Redirect to the home page (index.html)
+            window.location.href = "home.html"; // Adjust the redirect URL as needed
+
+            // Return false to prevent form submission since we handle redirection via JavaScript
+            return false;
+        }
+    </script>
 
 </body>
 </html>
